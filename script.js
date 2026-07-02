@@ -1,3 +1,5 @@
+process.env.ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION = 'true';
+
 // Document Element Selectors
 const openModalBtn = document.getElementById('open-modal-btn');
 const heroCtaBtn = document.getElementById('hero-cta');
