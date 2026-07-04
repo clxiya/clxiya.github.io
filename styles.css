@@ -1,3 +1,15 @@
+/*colors*/
+:root {
+  --c-drkblue: hsl(234, 26%, 31%);
+  --c-white: hsl(0, 0%, 100%);
+
+  --color-main-bg: var(--c-drkblue);
+  --color-text-light: var(--c-white);
+  --color-text-dark: var(--c-drkblue);
+  --color-button-primary-text-clickable: var(--c-white);
+
+}
+
 *,
 *::before,
 *::after {
@@ -17,4 +29,20 @@ picture,
 svg {
   max-width: 100%;
   display: block;
+}
+
+
+/* footer, modified to block instead of flex */
+.site-footer {
+padding: 1.1rem 2rem;
+display: block;
+align-items: center;
+justify-content: center;
+}
+
+/* social icons, modified to inline instead of inline-flex */ 
+.social-icons a {
+width: 18px;
+height: 18px;
+display: inline;
 }
