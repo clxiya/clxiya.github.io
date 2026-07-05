@@ -218,7 +218,7 @@ canvas {
   text-align: center;
 }
 
-.project-subcaption {
+.project-caption2 {
   font-size: clamp(0.85rem, 1.3vw, 1rem);
   font-weight: 100;
   letter-spacing: 0.01em;
