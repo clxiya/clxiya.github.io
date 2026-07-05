@@ -15,19 +15,31 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <div id="topnav">
-      <!--LEFT NAVS-->
-        <a href="about.html"> about</a>
-        <a href="porfolio.html">portfolio</a>
-      <!--LOGO, which is central-->
-      <a href="index.html">cmard</a>
-      <!--RIGHT NAVS-->
-      <a href="#">resume</a>
-      <a href="#">trinkets</a>
-    </div>
-    <h1>cmard.</h1>
-    <p>welcome.</p>
-    <p></p>
+   <div class="page-shell">
+      <main class="frame frame--landing" aria-label="Home">
+        <div class="hero">
+          <div class="hero-media" aria-label="Animated cmard logo">
+            <video
+              id="heroVideo"
+              class="hero-video"
+              muted
+              autoplay
+              playsinline
+              preload="auto">
+              <source src="cmard-animation.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <h1 class="hero-welcome">welcome.</h1>
+
+          <nav class="hero-nav" aria-label="Primary">
+            <a href="about.html">about</a>
+            <a href="portfolio.html">portfolio</a>
+            <a href="resume.html">resume</a>
+            <a href="trinkets.html">trinkets</a>
+          </nav>
+        </div>
+      </main>
 
  <!--Footer-->
     <footer class="site-footer" aria-label="Footer">

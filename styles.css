@@ -1,37 +1,223 @@
+/* ========= RESET ========= */
 /*colors*/
 :root {
-  --c-drkblue: hsl(234, 26%, 31%);
-  --c-white: hsl(0, 0%, 100%);
-
-  --color-main-bg: var(--c-drkblue);
-  --color-text-light: var(--c-white);
-  --color-text-dark: var(--c-drkblue);
-  --color-button-primary-text-clickable: var(--c-white);
-
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  --bg: #3A3E62;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.85);
+  --accent: #5b5b91;
+  --nav-gap: .2rem;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Special Gothic', 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
 img,
 picture,
-svg {
+svg,
+video,
+canvas {
   max-width: 100%;
   display: block;
 }
 
+/* PAGE SHELL */
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
+/* ===== FRAMES / SECTIONS ===== */
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem 4rem;
+  flex: 1;
+}
+
+.frame--landing {
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  padding-top: 2rem;
+}
+
+/* ===== SITE HEADER (about / portfolio / resume / trinkets) =====
+   Layout: [about | portfolio]  cmard  [resume | trinkets]
+   The cmard logo is the clickable home link. */
+.site-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+  padding: 2.2rem 1rem 1.6rem;
+}
+
+.logo {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* Nav groups on either side of the logo */
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap);
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+}
+
+/* Pipe separators between links within a group */
+.nav-group a:not(:last-child)::after,
+.hero-nav a:not(:last-child)::after {
+  content: "|";
+  display: inline-block; /* keeps the pipe from inheriting underline */
+  margin-left: var(--nav-gap);
+  font-weight: 400;
+}
+
+.nav-group a,
+.hero-nav a {
+  transition: opacity 0.2s ease;
+}
+
+.nav-group a:hover,
+.hero-nav a:hover {
+  opacity: 0.75;
+}
+
+.nav-group a.active {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 1.5px;
+}
+
+/* ===== LANDING (HOME) PAGE =====
+   Big animated "cmard." graphic, "welcome." below it,
+   then the nav row: about | portfolio | resume | trinkets */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  text-align: center;
+}
+
+.hero-media {
+  width: min(80vw, 720px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-media video,
+.hero-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-welcome {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.hero-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap);
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  text-transform: lowercase;
+}
+
+/* ===== ABOUT PAGE ===== */
+.about-content {
+  width: min(64vw, 46rem);
+  margin-top: 0.6rem;
+  align-self: center;
+}
+
+.about-copy {
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.about-copy p {
+  margin-bottom: 1.4rem;
+}
+
+/* ===== PORTFOLIO PAGE ===== */
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.project-media {
+  width: min(60vw, 640px);
+  aspect-ratio: 16 / 9;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-media img,
+.project-media video,
+.project-media iframe {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  border: none;
+}
+
+.project-caption {
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+/* ========= FOOTER ========= */
 /* footer, modified to block instead of flex */
 .site-footer {
 padding: 1.1rem 2rem;
@@ -40,9 +226,53 @@ align-items: center;
 justify-content: center;
 }
 
+/* Static fallback shown until the animated video/GIF is dropped in */
+.hero-fallback {
+  font-size: clamp(4.5rem, 16vw, 11rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.hero-welcome {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.hero-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-gap);
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  text-transform: lowercase;
+}
+
 /* social icons, modified to inline instead of inline-flex */ 
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .social-icons a {
 width: 18px;
 height: 18px;
 display: inline;
+align-items: center;
+justify-content: center;
+opacity: 1;
+transition: opacity 0.2 ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.6;
+}
+
+.social-icons img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+filter: invert(1);
 }
